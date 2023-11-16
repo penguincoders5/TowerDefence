@@ -2,8 +2,9 @@ import pygame
 from Map import Map
 
 #Constants
-HEIGHT = 800
 WIDTH = 1200
+HEIGHT = 800
+
 BG_COLOR = (210, 190, 100)
 
 #Setup Code
