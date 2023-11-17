@@ -41,7 +41,7 @@ class Map:
 
                     self.map[r][n] = 1
 
-    def draw(self, screen, x, y):
+    def draw(self, x, y):
         print('x:', x, ' y:',y)
         xi = x/self.gridsize
         yi = y/self.gridsize
