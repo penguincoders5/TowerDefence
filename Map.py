@@ -16,8 +16,8 @@ class Map:
             self.map.append(row)
 
 
-        map_encoding = [0, 10, 12]
-        self.generatemap(map_encoding)
+        # map_encoding = [0, 10, 12]
+        # self.generatemap(map_encoding)
 
     def drawmap(self):
 
@@ -40,3 +40,9 @@ class Map:
                     r += 1
 
                     self.map[r][n] = 1
+
+    def draw(self, screen, x, y):
+        print('x:', x, ' y:',y)
+        xi = x/self.gridsize
+        yi = y/self.gridsize
+        print('xi:', xi, ' yi:',yi)
