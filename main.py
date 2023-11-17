@@ -21,9 +21,23 @@ m.drawmap()
 
 while running:
 
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        # Section: Game & Click
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            m.clickFind(pygame.mouse.get_pos())
+
+        # Section: Key press
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_v:
+                print('WRITE MODE')
+                m.writeMode = True
+            if event.key == pygame.K_r:
+                print('SAVED')
+                m.saveMap()
+
 
 
     pygame.time.wait(1)
