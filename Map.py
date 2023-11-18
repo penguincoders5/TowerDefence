@@ -3,7 +3,7 @@ import random
 
 RANDOM_MODE = True
 DEBUG_MODE = False
-
+TEST_MODE = True
 
 class Map:
     def __init__(self, screen, w, h):
@@ -48,20 +48,35 @@ class Map:
         self.drawTile(row_index, col_index)
 
 
-    def saveMap(self):
-        f = open('maps.txt', 'w')
-        s = str(self.encoding[0])
+    def saveMap(self, title):
+        f = open('maps.txt', 'a')
+        s = title + '*' + str(self.encoding[0])
         for i in range(1, 3):
             s += '*'
             for c in self.encoding[i]:
                 s += str(c) + ' '
+        s += '\n'
         f.write(s)
 
     def loadMap(self):
+
         f = open('maps.txt', 'r')
         data = f.read()
-        datalist = data.split('*')
+        maplist = data.split('\n')
+        if TEST_MODE:
+            data = maplist[0]
+        else:
+            print('Current maps:')
+            for line in maplist:
+                print(line)
+            pick = input('Enter map title')
+            for line in maplist:
+                if pick in line:
+                    print(pick, ' selected')
+                    data = line
 
+        datalist = data.split('*')
+        datalist.pop(0)
         ##COPY AND PASTE FROM INIT to get gridsize
         self.gridsize = int(datalist[0])
 
@@ -78,8 +93,6 @@ class Map:
 
 
         for i in range(len(xs) - 1):
-
-            print(xs[i], ys[i])
             self.map[int(xs[i])][int(ys[i])] = 1
         self.drawmap()
 

@@ -1,5 +1,8 @@
 import pygame
 from Map import Map
+from GUI import GUI
+
+
 
 #Constants
 WIDTH = 1200
@@ -40,6 +43,9 @@ def addText(s, pos):
 m = Map(screen, WIDTH, HEIGHT)
 m.drawmap()
 
+button1 = GUI(screen, (100, 100), (170,170,170), (100,100,100))
+
+
 while running:
 
 
@@ -58,8 +64,10 @@ while running:
                 print('WRITE MODE')
                 m.writeMode = True
             if event.key == pygame.K_r:
-                print('SAVED')
-                m.saveMap()
+                title = input('Name: ')
+                print('nextline')
+                m.saveMap(title)
+                running = False
             if event.key == pygame.K_o:
                 m.loadMap()
 
